@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Chuva - ECharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <style>
+        #main {
+            width: 1200px;
+            height: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: 'Volume de Chuva Acumulada por Ano - Fazenda Carnaúba (Taperoá - PB)'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+            },
+            yAxis: {
+                type: 'value',
+                name: 'Chuva (mm)'
+            },
+            series: [
+                {
+                    name: 'Chuva (mm)',
+                    type: 'line',
+                    data: [404.6, 386.7, 295, 211.5, 764.8, 497.9, 591.3, 388.5, 938.6, 376.6],
+                    itemStyle: {
+                        color: '#1f77b4'
+                    },
+                    areaStyle: {
+                        color: 'rgba(31, 119, 180, 0.4)'
+                    },
+                    lineStyle: {
+                        width: 3
+                    },
+                    symbol: 'circle',
+                    symbolSize: 8
+                }
+            ],
+            dataZoom: [
+                {
+                    type: 'inside',
+                    start: 0,
+                    end: 100
+                },
+                {
+                    start: 0,
+                    end: 100
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+
+</body>
+</html>
